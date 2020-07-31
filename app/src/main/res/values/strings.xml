@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ONSAT</string>
+
+    <!--pub/sub environment-->
+    <string name="project_name">cameraman-29eb0</string>
+    <string name="topic_name">letopic</string>
 </resources>
