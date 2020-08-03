@@ -1,10 +1,10 @@
-package com.ons.at
+package uk.gov.ons.census.cfod.at
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
-import com.ons.at.data.model.Phone
-import com.ons.at.data.pubsub.PubSub
+import uk.gov.ons.census.cfod.at.data.model.Phone
+import uk.gov.ons.census.cfod.at.data.pubsub.PubSub
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject

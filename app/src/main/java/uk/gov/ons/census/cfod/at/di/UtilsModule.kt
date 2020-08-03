@@ -1,4 +1,4 @@
-package com.ons.at.di
+package uk.gov.ons.census.cfod.at.di
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder

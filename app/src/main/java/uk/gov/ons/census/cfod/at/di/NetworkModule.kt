@@ -1,7 +1,7 @@
-package com.ons.at.di
+package uk.gov.ons.census.cfod.at.di
 
-import com.ons.at.data.pubsub.PubSub
-import com.ons.at.data.pubsub.PubSubApi
+import uk.gov.ons.census.cfod.at.data.pubsub.PubSub
+import uk.gov.ons.census.cfod.at.data.pubsub.PubSubApi
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

@@ -1,4 +1,4 @@
-package com.ons.at.data.pubsub
+package uk.gov.ons.census.cfod.at.data.pubsub
 
 interface PubSub {
     fun subscribe(message: String)

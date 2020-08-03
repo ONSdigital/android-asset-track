@@ -1,4 +1,4 @@
-package com.ons.at
+package uk.gov.ons.census.cfod.at
 
 import org.junit.Test
 

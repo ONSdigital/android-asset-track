@@ -1,14 +1,14 @@
-package com.ons.at.di
+package uk.gov.ons.census.cfod.at.di
 
 import android.content.Context
 import com.google.auth.oauth2.GoogleCredentials
 import com.google.pubsub.v1.ProjectTopicName
-import com.ons.at.R
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
+import uk.gov.ons.census.cfod.at.R
 import javax.inject.Singleton
 
 @Module

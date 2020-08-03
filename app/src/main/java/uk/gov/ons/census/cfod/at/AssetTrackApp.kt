@@ -1,4 +1,4 @@
-package com.ons.at
+package uk.gov.ons.census.cfod.at
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
