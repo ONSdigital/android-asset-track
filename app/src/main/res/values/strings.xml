@@ -4,4 +4,8 @@
     <!--pub/sub environment-->
     <string name="project_name">cameraman-29eb0</string>
     <string name="topic_name">letopic</string>
+
+    <!-- device info names -->
+    <string name="phone_number">PhoneNumber</string>
+    <string name="ons_id">onsId</string>
 </resources>
