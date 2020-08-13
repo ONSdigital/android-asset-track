@@ -2,10 +2,13 @@
     <string name="app_name">ONSAT</string>
 
     <!--pub/sub environment-->
-    <string name="project_name">cameraman-29eb0</string>
-    <string name="topic_name">letopic</string>
+    <string name="project_name">census-fsdr-dev</string>
+    <string name="topic_name">device-info</string>
 
     <!-- device info names -->
     <string name="phone_number">PhoneNumber</string>
     <string name="ons_id">onsId</string>
+
+    <!-- ui text -->
+    <string name="close_text">Close</string>
 </resources>
