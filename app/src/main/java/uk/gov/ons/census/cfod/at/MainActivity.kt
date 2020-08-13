@@ -1,6 +1,7 @@
 package uk.gov.ons.census.cfod.at
 
 import android.Manifest
+import android.app.Activity
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -9,7 +10,12 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.work.Constraints
+import androidx.work.NetworkType
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_main.*
 import uk.gov.ons.census.cfod.at.data.account.UserAccountApi
 import javax.inject.Inject
 
@@ -28,8 +34,18 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         requestPermissions()
+        close_button.setOnClickListener{
+            closeApp()
+        }
+    }
+
+    /**
+     * close the app and set result ok  for zero touch enrollment
+     */
+    private fun closeApp() {
+        setResult(Activity.RESULT_OK)
+        finish()
     }
 
     /**
@@ -49,6 +65,7 @@ class MainActivity : AppCompatActivity() {
             -> {
                 readPhoneNumber()
                 readOnsId()
+                enqueuePublishWorker()
             }
             else -> {
                 requestPermissions(
@@ -75,8 +92,8 @@ class MainActivity : AppCompatActivity() {
                 ) {
                     readPhoneNumber()
                     readOnsId()
+                    enqueuePublishWorker()
                 } else {
-
                     Toast.makeText(
                         this,
                         "You can't get phone number and user e-email by denying permissions",
@@ -112,6 +129,19 @@ class MainActivity : AppCompatActivity() {
             putString(getString(R.string.ons_id), onsId)
             commit()
         }
+    }
+
+    /**
+     * we have to  publish our data within correct conditions , if there is  network ,etc...
+     */
+    private fun enqueuePublishWorker() {
+        val constraints = Constraints.Builder()
+            .setRequiredNetworkType(NetworkType.CONNECTED)
+            .build()
+        val request = OneTimeWorkRequestBuilder<PublishWorker>()
+            .setConstraints(constraints)
+            .build()
+        WorkManager.getInstance(applicationContext).enqueue(request)
     }
 
     companion object {

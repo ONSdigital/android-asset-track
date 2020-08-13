@@ -18,7 +18,7 @@ object PubSubModule {
     @Provides
     @Singleton
     fun provideCredentials(@ApplicationContext context: Context): GoogleCredentials =
-        GoogleCredentials.fromStream(context.resources?.run { openRawResource(R.raw.mockcreds) })
+        GoogleCredentials.fromStream(context.resources?.run { openRawResource(R.raw.creds) })
 
     @Provides
     @Singleton

@@ -30,6 +30,10 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
     packagingOptions {
         exclude 'META-INF/INDEX.LIST'
     }
@@ -63,7 +67,17 @@ dependencies {
     implementation "com.google.dagger:hilt-android:$hilt"
     kapt "com.google.dagger:hilt-android-compiler:$hilt"
 
+    // hilt for WorkManager
+    def hiltWork = "1.0.0-alpha02"
+    implementation "androidx.hilt:hilt-work:$hiltWork"
+    kapt 'androidx.hilt:hilt-compiler:1.0.0-alpha01'
+
     // gSon for JSON serialization
     def gSon = "2.8.6"
     implementation "com.google.code.gson:gson:$gSon"
+
+    // work manager
+    def work_version = "2.4.0"
+    implementation "androidx.work:work-runtime-ktx:$work_version"
+
 }
