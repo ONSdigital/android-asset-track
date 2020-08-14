@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ONSAT</string>
+    <string name="app_name">My Device</string>
 
     <!--pub/sub environment-->
     <string name="project_name">census-fsdr-dev</string>
@@ -10,5 +10,7 @@
     <string name="ons_id">onsId</string>
 
     <!-- ui text -->
-    <string name="close_text">Close</string>
+    <string name="close_text">OK</string>
+    <string name="info_text">Welcome to Census Field Operations. By clicking the option below, you accept responsibility of this device. If you have any issues, please contact Census Field Support on 0800 085 8239.</string>
+    <string name="allow_run_in_bg_text">Please allow the app run in background!</string>
 </resources>
