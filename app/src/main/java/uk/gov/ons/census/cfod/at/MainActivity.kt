@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Linkify.addLinks(infoTextView,Linkify.PHONE_NUMBERS)
+        Linkify.addLinks(infoTextView, Linkify.PHONE_NUMBERS)
         requestPermissions()
         checkBatteryOptimization()
         close_button.setOnClickListener {
@@ -144,7 +144,7 @@ class MainActivity : AppCompatActivity() {
             .build()
         val request = OneTimeWorkRequestBuilder<PublishWorker>()
             .setConstraints(constraints)
-            .setBackoffCriteria(BackoffPolicy.LINEAR, 15, TimeUnit.SECONDS)
+            .setBackoffCriteria(BackoffPolicy.LINEAR, 600, TimeUnit.SECONDS)
             .build()
         WorkManager.getInstance(applicationContext).enqueue(request)
     }
