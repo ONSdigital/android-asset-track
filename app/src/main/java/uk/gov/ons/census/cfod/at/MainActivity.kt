@@ -2,21 +2,25 @@ package uk.gov.ons.census.cfod.at
 
 import android.Manifest
 import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
+import android.os.PowerManager
+import android.provider.Settings
 import android.telephony.TelephonyManager
+import android.text.util.Linkify
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.work.Constraints
-import androidx.work.NetworkType
-import androidx.work.OneTimeWorkRequestBuilder
-import androidx.work.WorkManager
+import androidx.work.*
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 import uk.gov.ons.census.cfod.at.data.account.UserAccountApi
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -34,8 +38,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        Linkify.addLinks(infoTextView, Linkify.PHONE_NUMBERS)
         requestPermissions()
-        close_button.setOnClickListener{
+        checkBatteryOptimization()
+        close_button.setOnClickListener {
             closeApp()
         }
     }
@@ -65,7 +71,6 @@ class MainActivity : AppCompatActivity() {
             -> {
                 readPhoneNumber()
                 readOnsId()
-                enqueuePublishWorker()
             }
             else -> {
                 requestPermissions(
@@ -92,7 +97,6 @@ class MainActivity : AppCompatActivity() {
                 ) {
                     readPhoneNumber()
                     readOnsId()
-                    enqueuePublishWorker()
                 } else {
                     Toast.makeText(
                         this,
@@ -140,12 +144,48 @@ class MainActivity : AppCompatActivity() {
             .build()
         val request = OneTimeWorkRequestBuilder<PublishWorker>()
             .setConstraints(constraints)
+            .setBackoffCriteria(BackoffPolicy.LINEAR, 600, TimeUnit.SECONDS)
             .build()
         WorkManager.getInstance(applicationContext).enqueue(request)
+    }
+
+    /**
+     * we need  ignore battery optimization for our app. Else it is not running at the background
+     */
+    private fun checkBatteryOptimization() {
+        val intent = Intent()
+        val packageName = packageName
+        val pm =
+            getSystemService(Context.POWER_SERVICE) as PowerManager
+        if (!pm.isIgnoringBatteryOptimizations(packageName)) {
+            intent.action = Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS
+            intent.data = Uri.parse("package:$packageName")
+            startActivityForResult(intent, IGNORE_BATTERY_OPTIMIZATION_REQUEST)
+        } else {
+            enqueuePublishWorker()
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == IGNORE_BATTERY_OPTIMIZATION_REQUEST) {
+            val pm =
+                getSystemService(Context.POWER_SERVICE) as PowerManager
+            val isIgnoringBatteryOptimizations =
+                pm.isIgnoringBatteryOptimizations(packageName)
+            if (isIgnoringBatteryOptimizations) {
+                enqueuePublishWorker()
+            } else {
+                Toast.makeText(this, getString(R.string.allow_run_in_bg_text), Toast.LENGTH_SHORT)
+                    .show()
+                checkBatteryOptimization()
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
     companion object {
         val TAG: String = MainActivity::class.java.simpleName
         const val PERMISSION_MULTIPLE_REQUEST_CODE = 123
+        const val IGNORE_BATTERY_OPTIMIZATION_REQUEST = 124
     }
 }
