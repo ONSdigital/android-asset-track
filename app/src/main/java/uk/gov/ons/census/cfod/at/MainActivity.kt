@@ -128,10 +128,16 @@ class MainActivity : AppCompatActivity() {
      * the user id is Google e-mail address as onsId
      */
     private fun readOnsId() {
-        val onsId = userAccountApi.getEmail()
-        with(sharedPreferences.edit()) {
-            putString(getString(R.string.ons_id), onsId)
-            commit()
+        val onsId = sharedPreferences.getString(getString(R.string.ons_id), "")
+        if (!onsId.isNullOrEmpty()) {
+            infoTextView.text = getString(R.string.info_text, onsId)
+        } else {
+            val userAccount = userAccountApi.getEmail()
+            infoTextView.text = getString(R.string.info_text, userAccount)
+            with(sharedPreferences.edit()) {
+                putString(getString(R.string.ons_id), userAccount)
+                commit()
+            }
         }
     }
 

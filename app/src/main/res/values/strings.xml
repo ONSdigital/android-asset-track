@@ -11,6 +11,6 @@
 
     <!-- ui text -->
     <string name="close_text">OK</string>
-    <string name="info_text">Welcome to Census Field Operations. By clicking the option below, you accept responsibility of this device. If you have any issues, please contact Census Field Support on 0800 085 8239.</string>
+    <string name="info_text">The user of this phone is %1$s. By clicking OK below, you agree to take responsibility for this device and will reset the PIN at the earliest opportunity. If the username is correct, please continue with the Quick Start guide. If the username is incorrect, please contact Census Field Support on 0800 085 8239.</string>
     <string name="allow_run_in_bg_text">Please allow the app run in background!</string>
 </resources>

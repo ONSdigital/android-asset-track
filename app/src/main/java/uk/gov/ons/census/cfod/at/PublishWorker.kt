@@ -35,6 +35,7 @@ class PublishWorker @WorkerInject constructor(
             val sPhone = gSon.toJson(phone)
             val messageId = pubSub.publish(sPhone)
             Log.v(TAG, "published with messageId :$messageId")
+            pubSub.shutDownPublisher()
             return Result.success()
         } catch (throwable: Throwable) {
             Log.v(TAG, throwable.message.toString())

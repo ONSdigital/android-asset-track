@@ -5,7 +5,20 @@
     android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/info_padding"
     tools:context="uk.gov.ons.census.cfod.at.MainActivity">
+
+    <TextView
+        android:id="@+id/infoTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:autoLink="phone"
+        android:clickable="true"
+        android:textSize="@dimen/info_text_size"
+        app:layout_constraintBottom_toTopOf="@+id/close_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/close_button"
@@ -17,17 +30,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/infoTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/info_padding"
-        android:textSize="@dimen/info_text_size"
-        android:autoLink="phone"
-        android:clickable="true"
-        android:layout_marginBottom="30dp"
-        android:text="@string/info_text"
-        app:layout_constraintBottom_toTopOf="@+id/close_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
