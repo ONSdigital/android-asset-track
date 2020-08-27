@@ -1,7 +1,6 @@
 package uk.gov.ons.census.cfod.at
 
 import android.Manifest
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -11,7 +10,6 @@ import android.os.Bundle
 import android.os.PowerManager
 import android.provider.Settings
 import android.telephony.TelephonyManager
-import android.text.util.Linkify
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -38,20 +36,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Linkify.addLinks(infoTextView, Linkify.PHONE_NUMBERS)
         requestPermissions()
         checkBatteryOptimization()
-        close_button.setOnClickListener {
-            closeApp()
+        confirm_button.setOnClickListener {
+            finish()
         }
-    }
-
-    /**
-     * close the app and set result ok  for zero touch enrollment
-     */
-    private fun closeApp() {
-        setResult(Activity.RESULT_OK)
-        finish()
     }
 
     /**
@@ -130,10 +119,10 @@ class MainActivity : AppCompatActivity() {
     private fun readOnsId() {
         val onsId = sharedPreferences.getString(getString(R.string.ons_id), "")
         if (!onsId.isNullOrEmpty()) {
-            infoTextView.text = getString(R.string.info_text, onsId)
+            infoTextView.text = getString(R.string.info_text, onsId).toHtmlSpan()
         } else {
             val userAccount = userAccountApi.getEmail()
-            infoTextView.text = getString(R.string.info_text, userAccount)
+            infoTextView.text = getString(R.string.info_text, userAccount).toHtmlSpan()
             with(sharedPreferences.edit()) {
                 putString(getString(R.string.ons_id), userAccount)
                 commit()
