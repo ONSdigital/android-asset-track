@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="info_padding">30dp</dimen>
+    <dimen name="button_margin_top">40dp</dimen>
     <dimen name="info_text_size">18sp</dimen>
 </resources>
