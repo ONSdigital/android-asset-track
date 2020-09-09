@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/info_padding"
-    tools:context="uk.gov.ons.census.cfod.at.MainActivity">
+    tools:context="uk.mydevice.cfod.at.MainActivity">
 
     <TextView
         android:id="@+id/infoTextView"

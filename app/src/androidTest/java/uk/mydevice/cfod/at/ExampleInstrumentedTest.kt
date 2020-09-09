@@ -1,4 +1,4 @@
-package uk.gov.ons.census.cfod.at
+package uk.mydevice.cfod.at
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.ons.onsfr", appContext.packageName)
+        assertEquals("uk.mydevice.cfod.at.debug", appContext.packageName)
     }
 }

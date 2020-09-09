@@ -1,7 +1,7 @@
-package uk.gov.ons.census.cfod.at.di
+package uk.mydevice.cfod.at.di
 
-import uk.gov.ons.census.cfod.at.data.pubsub.PubSub
-import uk.gov.ons.census.cfod.at.data.pubsub.PubSubApi
+import uk.mydevice.cfod.at.data.pubsub.PubSub
+import uk.mydevice.cfod.at.data.pubsub.PubSubApi
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

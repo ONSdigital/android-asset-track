@@ -1,4 +1,4 @@
-package uk.gov.ons.census.cfod.at
+package uk.mydevice.cfod.at
 
 import android.app.Application
 import androidx.hilt.work.HiltWorkerFactory

@@ -9,16 +9,20 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "uk.gov.ons.census.cfod.at"
+        applicationId "uk.mydevice.cfod.at"
         minSdkVersion 26
         targetSdkVersion 30
-        versionCode 7
-        versionName "1.8"
+        versionCode 8
+        versionName "1.9"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
+        debug {
+            debuggable true
+            applicationIdSuffix ".debug"
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -70,7 +74,7 @@ dependencies {
     // hilt for WorkManager
     def hiltWork = "1.0.0-alpha02"
     implementation "androidx.hilt:hilt-work:$hiltWork"
-    kapt 'androidx.hilt:hilt-compiler:1.0.0-alpha01'
+    kapt "androidx.hilt:hilt-compiler:$hiltWork"
 
     // gSon for JSON serialization
     def gSon = "2.8.6"
