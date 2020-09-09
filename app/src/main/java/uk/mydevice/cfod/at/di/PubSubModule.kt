@@ -1,4 +1,4 @@
-package uk.gov.ons.census.cfod.at.di
+package uk.mydevice.cfod.at.di
 
 import android.content.Context
 import com.google.auth.oauth2.GoogleCredentials
@@ -8,7 +8,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
-import uk.gov.ons.census.cfod.at.R
+import uk.mydevice.cfod.at.R
 import javax.inject.Singleton
 
 @Module

@@ -1,4 +1,4 @@
-package uk.gov.ons.census.cfod.at
+package uk.mydevice.cfod.at
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -10,8 +10,8 @@ import androidx.hilt.work.WorkerInject
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import com.google.gson.Gson
-import uk.gov.ons.census.cfod.at.data.model.Phone
-import uk.gov.ons.census.cfod.at.data.pubsub.PubSub
+import uk.mydevice.cfod.at.data.model.Phone
+import uk.mydevice.cfod.at.data.pubsub.PubSub
 
 class PublishWorker @WorkerInject constructor(
     @Assisted val context: Context,

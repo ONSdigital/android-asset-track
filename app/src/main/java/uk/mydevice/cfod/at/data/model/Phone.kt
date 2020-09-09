@@ -1,4 +1,4 @@
-package uk.gov.ons.census.cfod.at.data.model
+package uk.mydevice.cfod.at.data.model
 
 data class Phone(
     val phoneNumber: String? = null,

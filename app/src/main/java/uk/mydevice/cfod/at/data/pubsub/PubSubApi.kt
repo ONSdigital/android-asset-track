@@ -1,4 +1,4 @@
-package uk.gov.ons.census.cfod.at.data.pubsub
+package uk.mydevice.cfod.at.data.pubsub
 
 import com.google.api.gax.core.FixedCredentialsProvider
 import com.google.auth.oauth2.GoogleCredentials

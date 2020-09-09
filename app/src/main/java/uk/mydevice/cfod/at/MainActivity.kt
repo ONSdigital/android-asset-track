@@ -1,4 +1,4 @@
-package uk.gov.ons.census.cfod.at
+package uk.mydevice.cfod.at
 
 import android.Manifest
 import android.content.Context
@@ -17,7 +17,7 @@ import androidx.core.content.ContextCompat
 import androidx.work.*
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
-import uk.gov.ons.census.cfod.at.data.account.UserAccountApi
+import uk.mydevice.cfod.at.data.account.UserAccountApi
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 

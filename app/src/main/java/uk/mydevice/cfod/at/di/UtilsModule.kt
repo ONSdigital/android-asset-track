@@ -1,4 +1,4 @@
-package uk.gov.ons.census.cfod.at.di
+package uk.mydevice.cfod.at.di
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -10,7 +10,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
-import uk.gov.ons.census.cfod.at.AssetTrackApp
+import uk.mydevice.cfod.at.AssetTrackApp
 import javax.inject.Singleton
 
 @Module

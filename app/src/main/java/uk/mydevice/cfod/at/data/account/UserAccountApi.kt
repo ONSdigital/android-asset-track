@@ -1,4 +1,4 @@
-package uk.gov.ons.census.cfod.at.data.account
+package uk.mydevice.cfod.at.data.account
 
 import android.accounts.Account
 import android.accounts.AccountManager
