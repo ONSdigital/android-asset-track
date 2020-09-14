@@ -3,6 +3,7 @@ package uk.mydevice.cfod.at.di
 import android.content.Context
 import android.content.SharedPreferences
 import android.telephony.TelephonyManager
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -34,4 +35,9 @@ object UtilsModule {
             Context.MODE_PRIVATE
         )
     }
+
+    @Provides
+    @Singleton
+    fun provideFirebaseAnalytics(@ApplicationContext context: Context): FirebaseAnalytics =
+        FirebaseAnalytics.getInstance(context)
 }

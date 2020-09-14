@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 30
@@ -83,4 +84,8 @@ dependencies {
     // work manager
     def work_version = "2.4.0"
     implementation "androidx.work:work-runtime-ktx:$work_version"
+
+    //firebase analytics
+    def firebaseAnalytics = "17.5.0"
+    implementation "com.google.firebase:firebase-analytics:$firebaseAnalytics"
 }
