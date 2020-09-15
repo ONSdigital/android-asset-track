@@ -12,14 +12,15 @@ android {
         applicationId "uk.mydevice.cfod.at"
         minSdkVersion 26
         targetSdkVersion 30
-        versionCode 8
-        versionName "1.9"
+        versionCode 9
+        versionName "2.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         debug {
+            //this needs to be set false during apk build for debug app
             debuggable true
             applicationIdSuffix ".debug"
         }
@@ -41,7 +42,6 @@ android {
     packagingOptions {
         exclude 'META-INF/INDEX.LIST'
     }
-
 }
 
 dependencies {
