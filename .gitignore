@@ -7,5 +7,6 @@
 .externalNativeBuild
 .cxx
 .idea
+/app/src/demoDebug/res/raw/creds.json
+/app/src/debug/res/raw/creds.json
 /app/src/main/res/raw/creds.json
-/app/src/main/res/raw/mockcreds.json

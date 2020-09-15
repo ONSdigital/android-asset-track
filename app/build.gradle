@@ -25,8 +25,21 @@ android {
             applicationIdSuffix ".debug"
         }
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    flavorDimensions "mode"
+    productFlavors {
+        demo {
+            // Assigns this product flavor to the "mode" flavor dimension.
+            dimension "mode"
+
+        }
+
+        full {
+            dimension "mode"
         }
     }
 

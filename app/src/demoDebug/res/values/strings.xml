@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">My Device Black Lodge</string>
+
+    <!--pub/sub environment-->
+    <string name="project_name">census-fsdr-blacklodge</string>
+    <string name="topic_name">device-info</string>
+</resources>
