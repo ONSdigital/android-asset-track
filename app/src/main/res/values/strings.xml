@@ -2,7 +2,7 @@
     <string name="app_name">My Device</string>
 
     <!--pub/sub environment-->
-    <string name="project_name">census-fsdr-dev</string>
+    <string name="project_name">census-fsdr-blacklodge</string>
     <string name="topic_name">device-info</string>
 
     <!-- device info names -->
