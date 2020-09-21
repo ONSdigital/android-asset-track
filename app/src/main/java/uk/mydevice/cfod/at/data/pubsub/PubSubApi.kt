@@ -1,11 +1,14 @@
 package uk.mydevice.cfod.at.data.pubsub
 
+import android.util.Log
+import com.google.api.core.ApiFuture
 import com.google.api.gax.core.FixedCredentialsProvider
 import com.google.auth.oauth2.GoogleCredentials
 import com.google.cloud.pubsub.v1.Publisher
 import com.google.protobuf.ByteString
 import com.google.pubsub.v1.ProjectTopicName
 import com.google.pubsub.v1.PubsubMessage
+import java.lang.Exception
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
@@ -19,7 +22,7 @@ class PubSubApi @Inject constructor(
     /**
      * Method implementation for publish a message to subscribers
      */
-    override fun publish(message: String): String? {
+    override fun publish(message: String): ApiFuture<String>? {
         val pubSubMessage = PubsubMessage
             .newBuilder()
             .setData(ByteString.copyFromUtf8(message))
@@ -28,13 +31,17 @@ class PubSubApi @Inject constructor(
             .newBuilder(projectTopicName)
             .setCredentialsProvider(FixedCredentialsProvider.create(googleCredentials))
             .build()
-        val apiFuture = publisher?.publish(pubSubMessage)
-        return apiFuture?.get()
+        return publisher?.publish(pubSubMessage)
     }
 
     override fun shutDownPublisher() {
-        publisher?.shutdown()
-        publisher?.awaitTermination(1, TimeUnit.MINUTES)
+        try {
+            publisher?.shutdown()
+            publisher?.awaitTermination(1, TimeUnit.MINUTES)
+        } catch (e: Exception) {
+            Log.e(TAG, e.toString())
+        }
+
     }
 
     companion object {
