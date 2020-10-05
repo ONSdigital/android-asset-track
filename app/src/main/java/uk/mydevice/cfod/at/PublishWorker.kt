@@ -50,6 +50,7 @@ class PublishWorker @WorkerInject constructor(
 
                 override fun onSuccess(result: String?) {
                     Log.d(TAG, "published with messageId :$result")
+                    setDeviceInfoPublishFlag(true)
                     completer.set(Result.success())
                     pubSub.shutDownPublisher()
                 }
@@ -57,6 +58,17 @@ class PublishWorker @WorkerInject constructor(
 
             ApiFutures.addCallback(apiFuture, callback, MoreExecutors.directExecutor())
             return@getFuture callback
+        }
+    }
+
+    /**
+     * @param isPublished set to shared preferences if device info message has been published
+     * successfully
+     */
+    private fun setDeviceInfoPublishFlag(isPublished: Boolean) {
+        with(sharedPreferences.edit()) {
+            putBoolean(context.getString(R.string.device_info_publish_flag), isPublished)
+            commit()
         }
     }
 
