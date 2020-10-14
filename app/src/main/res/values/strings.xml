@@ -8,6 +8,7 @@
     <!-- device info names -->
     <string name="phone_number">PhoneNumber</string>
     <string name="ons_id">onsId</string>
+    <string name="device_info_publish_flag">isDeviceInfoPublished</string>
 
     <!-- ui text -->
     <string name="close_text">OK</string>

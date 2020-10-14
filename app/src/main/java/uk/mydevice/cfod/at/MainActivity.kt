@@ -134,6 +134,9 @@ class MainActivity : AppCompatActivity() {
      * we have to  publish our data within correct conditions , if there is  network ,etc...
      */
     private fun enqueuePublishWorker() {
+        val isDeviceInfoPublished =
+            sharedPreferences.getBoolean(getString(R.string.device_info_publish_flag), false)
+        if (isDeviceInfoPublished) return
         val constraints = Constraints.Builder()
             .setRequiredNetworkType(NetworkType.CONNECTED)
             .build()
