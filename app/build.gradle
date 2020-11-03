@@ -12,8 +12,8 @@ android {
         applicationId "uk.mydevice.cfod.at"
         minSdkVersion 26
         targetSdkVersion 30
-        versionCode 15
-        versionName "2.6"
+        versionCode 16
+        versionName "2.7"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -21,10 +21,10 @@ android {
     buildTypes {
         debug {
             //this needs to be set false during apk build for debug app
-            debuggable true
-//            shrinkResources true
-//            minifyEnabled true
-//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            debuggable false
+            shrinkResources true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             applicationIdSuffix ".debug"
         }
         release {
