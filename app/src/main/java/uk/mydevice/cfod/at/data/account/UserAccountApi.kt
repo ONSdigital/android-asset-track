@@ -15,7 +15,13 @@ class UserAccountApi @Inject constructor(@ApplicationContext context: Context) {
      */
     private fun getAccount(): Account? {
         val accounts = accountManager.getAccountsByType(ACCOUNT_TYPE_GOOGLE)
-        return if (accounts.isNotEmpty()) accounts[0] else null
+        var account: Account? = null
+        for (item in accounts) {
+            if (item.name.endsWith("field.census.gov.uk") || item.name.endsWith("FIELD.CENSUS.GOV.UK")) {
+                account = item
+            }
+        }
+        return account
     }
 
     /**
