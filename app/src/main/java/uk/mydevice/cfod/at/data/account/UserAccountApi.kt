@@ -17,7 +17,7 @@ class UserAccountApi @Inject constructor(@ApplicationContext context: Context) {
         val accounts = accountManager.getAccountsByType(ACCOUNT_TYPE_GOOGLE)
         var account: Account? = null
         for (item in accounts) {
-            if (item.name.endsWith("field.census.gov.uk") || item.name.endsWith("FIELD.CENSUS.GOV.UK")) {
+            if (item.name.toLowerCase().endsWith("field.census.gov.uk")) {
                 account = item
             }
         }
